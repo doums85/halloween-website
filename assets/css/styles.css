@@ -781,6 +781,9 @@ button {
   padding: 0;
 }
 
+.main--mobile .home__img {
+  width: calc(30vw + 10rem);
+}
 
 .main--mobile .home__content {
   row-gap: 1rem;
