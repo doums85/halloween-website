@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!--=============== BOXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <title>Halloween Website | Zero Media queries</title>
+  </head>
+
+  <body
+    x-data="{mobile: window.innerWidth < 767, menu, sliders, categories, tricks, footer, navActive: 0, sliderActive: 0, toggle: false, scrollUp: true }"
+    @resize.window="mobile = window.innerWidth < 767"
+    @scroll.window="scrollUp = (window.pageYOffset < 460) ? false : true"
+  >
+    <!--==================== HEADER ====================-->
+    <header :class="mobile ? 'header--mobile' : 'header'" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">
+          <img src="assets/img/logo.png" alt="" class="nav__logo-img" />
+          Halloween
+        </a>
+
+        <div class="nav__menu" :id="toggle ? 'show-menu' : ''">
+          <ul class="nav__list">
+            <!--==================== NAV LINK TEMPLATE  ====================-->
+            <template x-for="(menuItem, index) in menu" :key="menuItem">
+              <li class="nav__item">
+                <a
+                  x-text="menuItem"
+                  xx-bind::href="'#' + menuItem"
+                  @click="navActive = index"
+                  :class="navActive === index ? 'nav__link active-link' : 'nav__link'"
+                ></a>
+              </li>
+            </template>
+
+            <a href="#" class="button button--ghost">Support</a>
+          </ul>
+
+          <div
+            x-show="mobile"
+            @click="toggle = !toggle"
+            class="nav__close"
+            id="nav-close"
+          >
+            <i class="bx bx-x"></i>
+          </div>
+
+          <img
+            x-show="mobile"
+            src="assets/img/nav-img.png"
+            alt=""
+            class="nav__img"
+          />
+        </div>
+
+        <div
+          x-show="mobile"
+          @click="toggle = !toggle"
+          class="nav__toggle"
+          id="nav-toggle"
+        >
+          <i class="bx bx-grid-alt"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main :class="mobile ? 'main--mobile' : 'main'">
+      <!--==================== HOME ====================-->
+      <section class="home container" id="home">
+        <!--==================== SLIDER TEMPLATE  ====================-->
+        <template x-for="(slide, index) in sliders" :key="slide">
+          <section
+            x-show="sliderActive === index"
+            class="slider"
+            x-transition:enter.duration.500ms
+            x-transition:leave.duration.400ms
+            x-transition:opacity
+          >
+            <div
+              :class="mobile ? 'home__content--mobile grid' : 'home__content--desktop grid'"
+            >
+              <div class="home__group">
+                <div class="home__img">
+                  <img :src="slide.image" alt="slider image" />
+                </div>
+                <div :class=" home__indicator"></div>
+
+                <div class="home__details-img">
+                  <h4
+                    x-text="slide.heading[0].title"
+                    class="home__details-title"
+                  ></h4>
+                  <span
+                    x-text="slide.heading[0].subTitle"
+                    class="home__details-subtitle"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="home__data">
+                <h3
+                  x-text="slide.detail[0].subTitle"
+                  class="home__subtitle"
+                ></h3>
+                <h1 class="home__title">
+                  <span x-text="slide.detail[0].title[0]"></span>
+                  <span x-text="slide.detail[0].title[1]"></span>
+                  <span x-text="slide.detail[0].title[2]"></span>
+                </h1>
+                <p
+                  x-text="slide.detail[0].description"
+                  class="home__description"
+                ></p>
+
+                <div class="home__buttons">
+                  <a href="#" class="button">Book Now</a>
+                  <a href="#" class="button--link button--flex"
+                    >Track Record
+                    <i class="bx bx-right-arrow-alt button__icon"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </template>
+
+        <!--==================== PAGINATION TEMPLATE  ====================-->
+        <div class="pagination">
+          <ul class="pagination__list">
+            <template x-for="(slide, index) in sliders" :key="slide">
+              <li
+                :class="sliderActive === index ? 'pagination__item pagination__item--active' : 'pagination__item'"
+                @click="sliderActive = index"
+              ></li>
+            </template>
+          </ul>
+        </div>
+      </section>
+
+      <!--==================== CATEGORY ====================-->
+      <section class="section category">
+        <h2 class="section__title">
+          Favorite Scare <br />
+          Category
+        </h2>
+
+        <div class="category__container container grid">
+          <!--==================== CATEGORY TEMPLATE  ====================-->
+          <template x-for="category in categories" :key="category">
+            <div class="category__data">
+              <img
+                :src="category.image"
+                x-bind:alt="category.title"
+                class="category__img"
+              />
+              <h3 x-text="category.title" class="category__title"></h3>
+              <p
+                x-text="category.description"
+                class="category__description"
+              ></p>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <!--==================== ABOUT ====================-->
+      <section class="section about" id="about">
+        <div class="about__container container grid">
+          <div
+            :style="mobile ? 'text-align: center;' : 'text-align: iniatial'"
+            class="about__data"
+          >
+            <h2 class="section__title about__title">
+              About Halloween <br />
+              Night
+            </h2>
+            <p class="about__description">
+              Night of all the saints, or all the dead, is celebrated on October
+              31 and it is a very fun international celebration, this
+              celebration comes from ancient origins, and is already celebrated
+              by everyone.
+            </p>
+            <a href="#" class="button">Know more</a>
+          </div>
+
+          <img src="assets/img/about-img.png" alt="" class="about__img" />
+        </div>
+      </section>
+
+      <!--==================== TRICK OR TREAT ====================-->
+      <section class="section trick" id="trick">
+        <h2 class="section__title">Trick Or Treat</h2>
+
+        <div class="trick__container container grid">
+          <!--==================== TRICK TEMPLATE ====================-->
+          <template x-for="trick in tricks" :key="trick">
+            <div class="trick__content">
+              <img
+                :src="trick.image"
+                x-bind:alt="trick.title"
+                class="trick__img"
+              />
+              <h3 x-text="trick.title" class="trick__title"></h3>
+              <span x-text="trick.subTitle" class="trick__subtitle"></span>
+              <span x-text="trick.price" class="trick__price"></span>
+              <button class="button trick__button">
+                <i class="bx bx-cart-alt trick__icon"></i>
+              </button>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <!--==================== DISCOUNT ====================-->
+      <section class="section discount">
+        <div class="discount__container container grid">
+          <div class="discount__data">
+            <h2 class="discount__title">
+              50% Discount <br />
+              On New Products
+            </h2>
+            <a href="#" class="button">Go to new</a>
+          </div>
+
+          <img
+            :style="mobile ? 'order: 1' : 'order: -1'"
+            src="assets/img/discount-img.png"
+            alt=""
+            class="discount__img"
+          />
+        </div>
+      </section>
+
+      <!--==================== NEW ARRIVALS ====================-->
+      <section class="section new" id="new">
+        <h2 class="section__title">New Arrivals</h2>
+
+        <div class="new__container container">
+          <div class="swiper new-swiper">
+            <div class="swiper-wrapper">
+              <div class="new__content swiper-slide">
+                <div class="new__tag">New</div>
+                <img src="assets/img/new1-img.png" alt="" class="new__img" />
+                <h3 class="new__title">Haunted House</h3>
+                <span class="new__subtitle">Accessory</span>
+
+                <div class="new__prices">
+                  <span class="new__price">$14.99</span>
+                  <span class="new__discount">$29.99</span>
+                </div>
+
+                <button class="button new__button">
+                  <i class="bx bx-cart-alt new__icon"></i>
+                </button>
+              </div>
+
+              <div class="new__content swiper-slide">
+                <div class="new__tag">New</div>
+                <img src="assets/img/new2-img.png" alt="" class="new__img" />
+                <h3 class="new__title">Halloween Candle</h3>
+                <span class="new__subtitle">Accessory</span>
+
+                <div class="new__prices">
+                  <span class="new__price">$11.99</span>
+                  <span class="new__discount">$21.99</span>
+                </div>
+
+                <button class="button new__button">
+                  <i class="bx bx-cart-alt new__icon"></i>
+                </button>
+              </div>
+
+              <div class="new__content swiper-slide">
+                <div class="new__tag">New</div>
+                <img src="assets/img/new3-img.png" alt="" class="new__img" />
+                <h3 class="new__title">Witch Hat</h3>
+                <span class="new__subtitle">Accessory</span>
+
+                <div class="new__prices">
+                  <span class="new__price">$4.99</span>
+                  <span class="new__discount">$9.99</span>
+                </div>
+
+                <button class="button new__button">
+                  <i class="bx bx-cart-alt new__icon"></i>
+                </button>
+              </div>
+
+              <div class="new__content swiper-slide">
+                <div class="new__tag">New</div>
+                <img src="assets/img/new4-img.png" alt="" class="new__img" />
+                <h3 class="new__title">Rip</h3>
+                <span class="new__subtitle">Accessory</span>
+
+                <div class="new__prices">
+                  <span class="new__price">$24.99</span>
+                  <span class="new__discount">$44.99</span>
+                </div>
+
+                <button class="button new__button">
+                  <i class="bx bx-cart-alt new__icon"></i>
+                </button>
+              </div>
+
+              <div class="new__content swiper-slide">
+                <div class="new__tag">New</div>
+                <img src="assets/img/new5-img.png" alt="" class="new__img" />
+                <h3 class="new__title">Terrifying Crystal Ball</h3>
+                <span class="new__subtitle">Accessory</span>
+
+                <div class="new__prices">
+                  <span class="new__price">$5.99</span>
+                  <span class="new__discount">$12.99</span>
+                </div>
+
+                <button class="button new__button">
+                  <i class="bx bx-cart-alt new__icon"></i>
+                </button>
+              </div>
+
+              <div class="new__content swiper-slide">
+                <div class="new__tag">New</div>
+                <img src="assets/img/new6-img.png" alt="" class="new__img" />
+                <h3 class="new__title">Witch Broom</h3>
+                <span class="new__subtitle">Accessory</span>
+
+                <div class="new__prices">
+                  <span class="new__price">$7.99</span>
+                  <span class="new__discount">$14.99</span>
+                </div>
+
+                <button class="button new__button">
+                  <i class="bx bx-cart-alt new__icon"></i>
+                </button>
+              </div>
+            </div>
+            <div class="new-pagination">1</div>
+          </div>
+        </div>
+      </section>
+
+      <!--==================== OUR NEWSLETTER ====================-->
+      <section class="section newsletter">
+        <div class="newsletter__container container">
+          <h2 class="section__title">Our Newsletter</h2>
+          <p class="newsletter__description">
+            Promotion new products and sales. Directly to your inbox
+          </p>
+
+          <form action="" class="newsletter__form">
+            <input
+              type="text"
+              placeholder="Enter your email"
+              class="newsletter__input"
+            />
+            <button class="button">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+      <div class="footer__container container grid">
+        <div class="footer__content">
+          <a href="#" class="footer__logo">
+            <img src="assets/img/logo.png" alt="" class="footer__logo-img" />
+            Halloween
+          </a>
+
+          <p class="footer__description">
+            Enjoy the scariest night <br />
+            of your life.
+          </p>
+
+          <div class="footer__social">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="footer__social-link"
+            >
+              <i class="bx bxl-facebook"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              class="footer__social-link"
+            >
+              <i class="bx bxl-instagram-alt"></i>
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              class="footer__social-link"
+            >
+              <i class="bx bxl-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <!--==================== FOOTER MENU TEMPLATE ====================-->
+        <template x-for="(el, index) in footer" :key="el">
+          <div class="footer__content">
+            <h3 x-text="el.title" class="footer__title"></h3>
+
+            <ul class="footer__links">
+              <template x-for="(navLink, index) in el.item" :key="navLink">
+                <li>
+                  <a x-text="navLink" href="#" class="footer__link">About Us</a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </template>
+      </div>
+
+      <span class="footer__copy"
+        >&#169; Halloween. All rigths reserved | by
+        <a href="https://github.com/doums85/halloween-website" target="_blank">Mamadou</a>
+        <span> <img width="20" src="./assets/img/logo.png" alt="logo" /></span
+      ></span>
+
+      <img src="assets/img/footer1-img.png" alt="" class="footer__img-one" />
+      <img
+        :style="mobile ? 'bottom: 4rem; right: 4rem;': 'top: 30%;left: -3%;'"
+        src="assets/img/footer2-img.png"
+        alt=""
+        class="footer__img-two"
+      />
+    </footer>
+
+    <!--=============== SCROLL UP ===============-->
+    <a href="#" :class="scrollUp ? 'scrollup' : 'scrollup scrollup-hide'">
+      <i class="bx bx-up-arrow-alt scrollup__icon"></i>
+    </a>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--=============== ALPINE ===============-->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
