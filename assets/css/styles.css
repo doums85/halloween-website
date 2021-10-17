@@ -202,8 +202,8 @@ button {
 }
 
 .nav__link {
-  text-transform: uppercase;
-  font-weight: var(--font-black);
+  text-transform: capitalize;
+  font-weight: initial;
   transition: .4s;
 }
 
@@ -744,7 +744,12 @@ button {
   border-radius: 0 0 1.5rem 1.5rem;
 }
 
-.nav__menu--mobile .nav__list {
+.header--mobile .nav__link {
+  text-transform: uppercase;
+  font-weight: var(--font-black);
+}
+
+.header--mobile .nav__menu .nav__list {
   flex-direction: column;
   row-gap: 1.5rem;
 }
