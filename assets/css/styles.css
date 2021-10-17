@@ -297,6 +297,7 @@ button {
 .new-pagination {
   position: initial;
   margin-top: var(--mb-1);
+  cursor: pointer;
 }
 
 .new-pagination {
