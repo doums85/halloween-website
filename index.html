@@ -46,7 +46,7 @@
               <li class="nav__item">
                 <a
                   x-text="menuItem"
-                  xx-bind::href="'#' + menuItem"
+                  x-bind:href="'#' + menuItem"
                   @click="navActive = index"
                   :class="navActive === index ? 'nav__link active-link' : 'nav__link'"
                 ></a>
@@ -208,7 +208,7 @@
       </section>
 
       <!--==================== TRICK OR TREAT ====================-->
-      <section class="section trick" id="trick">
+      <section class="section trick" id="candy">
         <h2 class="section__title">Trick Or Treat</h2>
 
         <div class="trick__container container grid">

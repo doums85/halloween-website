@@ -1,4 +1,4 @@
-const menu = ['Home', 'About', 'Candy', 'New'];
+const menu = ['home', 'about', 'candy', 'new'];
 
 /* SLIDER */
 
