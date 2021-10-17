@@ -4,7 +4,7 @@ const menu = ['home', 'about', 'candy', 'new'];
 
 const sliders = [
   {
-    image: 'assets/img/home1-img.png',
+    image: './img/home1-img.png',
     heading: [
       {
         title: 'The Labu “Reiza”',
@@ -21,7 +21,7 @@ const sliders = [
     ],
   },
   {
-    image: 'assets/img/home2-img.png',
+    image: './img/home2-img.png',
     heading: [
       {
         title: 'Adino & Grahami',
@@ -38,7 +38,7 @@ const sliders = [
     ],
   },
   {
-    image: 'assets/img/home3-img.png',
+    image: './img/home3-img.png',
     heading: [
       {
         title: 'Captain Sem',
@@ -58,17 +58,17 @@ const sliders = [
 
 const categories = [
   {
-    image: 'assets/img/category1-img.png',
+    image: './img/category1-img.png',
     title: 'Ghosts',
     description: 'Choose the ghosts, the scariest there are.',
   },
   {
-    image: 'assets/img/category2-img.png',
+    image: './img/category2-img.png',
     title: 'Pumpkins',
     description: 'You look at the scariest pumpkins there is.',
   },
   {
-    image: 'assets/img/category3-img.png',
+    image: './img/category3-img.png',
     title: 'Witch Hat',
     description: 'Pick the most stylish witch hats out there.',
   },
@@ -76,37 +76,37 @@ const categories = [
 
 const tricks = [
   {
-    image: 'assets/img/trick-treat1-img.png',
+    image: './img/trick-treat1-img.png',
     title: 'Toffee',
     subTitle: 'Candy',
     price: '$11.99',
   },
   {
-    image: 'assets/img/trick-treat2-img.png',
+    image: './img/trick-treat2-img.png',
     title: 'Bone',
     subTitle: 'Accessory',
     price: '$8.99',
   },
   {
-    image: 'assets/img/trick-treat3-img.png',
+    image: './img/trick-treat3-img.png',
     title: 'Scarecrow',
     subTitle: 'CaAccessoryndy',
     price: '$15.99',
   },
   {
-    image: 'assets/img/trick-treat4-img.png',
+    image: './img/trick-treat4-img.png',
     title: 'Candy Cane',
     subTitle: 'Candy',
     price: '$7.99',
   },
   {
-    image: 'assets/img/trick-treat5-img.png',
+    image: './img/trick-treat5-img.png',
     title: 'Pumpkin',
     subTitle: 'Candy',
     price: '$19.99',
   },
   {
-    image: 'assets/img/trick-treat6-img.png',
+    image: './img/trick-treat6-img.png',
     title: 'Ghost',
     subTitle: 'Accessory',
     price: '$17.99',
@@ -115,28 +115,28 @@ const tricks = [
 
 const newArivals = [
   {
-    image: 'assets/img/new1-img.png',
+    image: './img/new1-img.png',
     title: 'Haunted House',
     subTitle: 'Accessory',
     price: '$14.99',
     discount: '$29.99',
   },
   {
-    image: 'assets/img/new2-img.png',
+    image: './img/new2-img.png',
     title: 'Haunted House',
     subTitle: 'Accessory',
     price: '$14.99',
     discount: '$29.99',
   },
   {
-    image: 'assets/img/new3-img.png',
+    image: './img/new3-img.png',
     title: 'Haunted House',
     subTitle: 'Accessory',
     price: '$14.99',
     discount: '$29.99',
   },
   {
-    image: 'assets/img/new4-img.png',
+    image: './img/new4-img.png',
     title: 'Haunted House',
     subTitle: 'Accessory',
     price: '$14.99',
@@ -160,7 +160,8 @@ const footer = [
   },
 ];
 
-/* SWIPER NEW ARRIVALS */
+
+/*=============== SWIPER NEW ARRIVALS ===============*/
 new Swiper('.new-swiper', {
   centeredSlides: true,
   slidesPerView: 'auto',
@@ -171,3 +172,24 @@ new Swiper('.new-swiper', {
     clickable: true,
   },
 });
+
+
+/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+const sections = document.querySelectorAll('section[id]')
+
+function scrollActive(){
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight,
+              sectionTop = current.offsetTop - 50,
+              sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive)

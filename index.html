@@ -7,7 +7,7 @@
     <!--=============== FAVICON ===============-->
     <link
       rel="shortcut icon"
-      href="assets/img/favicon.png"
+      href="./img/favicon.png"
       type="image/x-icon"
     />
 
@@ -18,10 +18,13 @@
     />
 
     <!--=============== SWIPER CSS ===============-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
 
     <title>Halloween Website | Zero Media queries</title>
   </head>
@@ -35,7 +38,7 @@
     <header :class="mobile ? 'header--mobile' : 'header'" id="header">
       <nav class="nav container">
         <a href="#" class="nav__logo">
-          <img src="assets/img/logo.png" alt="" class="nav__logo-img" />
+          <img src="./img/logo.png" alt="" class="nav__logo-img" />
           Halloween
         </a>
 
@@ -67,7 +70,7 @@
 
           <img
             x-show="mobile"
-            src="assets/img/nav-img.png"
+            src="./img/nav-img.png"
             alt=""
             class="nav__img"
           />
@@ -203,7 +206,7 @@
             <a href="#" class="button">Know more</a>
           </div>
 
-          <img src="assets/img/about-img.png" alt="" class="about__img" />
+          <img src="./img/about-img.png" alt="" class="about__img" />
         </div>
       </section>
 
@@ -244,7 +247,7 @@
 
           <img
             :style="mobile ? 'order: 1' : 'order: -1'"
-            src="assets/img/discount-img.png"
+            src="./img/discount-img.png"
             alt=""
             class="discount__img"
           />
@@ -260,7 +263,7 @@
             <div class="swiper-wrapper">
               <div class="new__content swiper-slide">
                 <div class="new__tag">New</div>
-                <img src="assets/img/new1-img.png" alt="" class="new__img" />
+                <img src="./img/new1-img.png" alt="" class="new__img" />
                 <h3 class="new__title">Haunted House</h3>
                 <span class="new__subtitle">Accessory</span>
 
@@ -276,7 +279,7 @@
 
               <div class="new__content swiper-slide">
                 <div class="new__tag">New</div>
-                <img src="assets/img/new2-img.png" alt="" class="new__img" />
+                <img src="./img/new2-img.png" alt="" class="new__img" />
                 <h3 class="new__title">Halloween Candle</h3>
                 <span class="new__subtitle">Accessory</span>
 
@@ -292,7 +295,7 @@
 
               <div class="new__content swiper-slide">
                 <div class="new__tag">New</div>
-                <img src="assets/img/new3-img.png" alt="" class="new__img" />
+                <img src="./img/new3-img.png" alt="" class="new__img" />
                 <h3 class="new__title">Witch Hat</h3>
                 <span class="new__subtitle">Accessory</span>
 
@@ -308,7 +311,7 @@
 
               <div class="new__content swiper-slide">
                 <div class="new__tag">New</div>
-                <img src="assets/img/new4-img.png" alt="" class="new__img" />
+                <img src="./img/new4-img.png" alt="" class="new__img" />
                 <h3 class="new__title">Rip</h3>
                 <span class="new__subtitle">Accessory</span>
 
@@ -324,7 +327,7 @@
 
               <div class="new__content swiper-slide">
                 <div class="new__tag">New</div>
-                <img src="assets/img/new5-img.png" alt="" class="new__img" />
+                <img src="./img/new5-img.png" alt="" class="new__img" />
                 <h3 class="new__title">Terrifying Crystal Ball</h3>
                 <span class="new__subtitle">Accessory</span>
 
@@ -340,7 +343,7 @@
 
               <div class="new__content swiper-slide">
                 <div class="new__tag">New</div>
-                <img src="assets/img/new6-img.png" alt="" class="new__img" />
+                <img src="./img/new6-img.png" alt="" class="new__img" />
                 <h3 class="new__title">Witch Broom</h3>
                 <span class="new__subtitle">Accessory</span>
 
@@ -384,7 +387,7 @@
       <div class="footer__container container grid">
         <div class="footer__content">
           <a href="#" class="footer__logo">
-            <img src="assets/img/logo.png" alt="" class="footer__logo-img" />
+            <img src="./img/logo.png" alt="" class="footer__logo-img" />
             Halloween
           </a>
 
@@ -435,14 +438,19 @@
 
       <span class="footer__copy"
         >&#169; Halloween. All rigths reserved | by
-        <a class="footer__link" href="https://github.com/doums85/halloween-website" target="_blank">Mamadou</a>
-        <span> <img width="20" src="./assets/img/logo.png" alt="logo" /></span
+        <a
+          class="footer__link"
+          href="https://github.com/doums85/halloween-website"
+          target="_blank"
+          >Mamadou</a
+        >
+        <span> <img width="20" src="./img/logo.png" alt="logo" /></span
       ></span>
 
-      <img src="assets/img/footer1-img.png" alt="" class="footer__img-one" />
+      <img src="./img/footer1-img.png" alt="" class="footer__img-one" />
       <img
         :style="mobile ? 'bottom: 4rem; right: 4rem;': 'top: 30%;left: -3%;'"
-        src="assets/img/footer2-img.png"
+        src="./img/footer2-img.png"
         alt=""
         class="footer__img-two"
       />
@@ -454,7 +462,8 @@
     </a>
 
     <!--=============== SWIPER JS ===============-->
-    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
     <!--=============== ALPINE ===============-->
     <script
       defer
@@ -462,6 +471,6 @@
     ></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
