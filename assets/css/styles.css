@@ -477,7 +477,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  padding: 2.5rem 0 1.5rem;
+  padding: 2.5rem 0 1.5rem!important;
   background: var(--container-color);
   border-radius: calc(2vw + 1rem);
 }
